@@ -14,22 +14,19 @@ class EducateMeViewController: UIViewController {
 
     
     @IBOutlet weak var answer_of: UITextView!
-    
+    var healthInfoList =  [String]()
     
     override func viewDidLoad() {
+        
         super.viewDidLoad()
+        print(healthInfoList[0])
+let vc = SFSafariViewController(url: URL(string: healthInfoList[0])!)
 
+present(vc, animated: true)
         
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        
-        // answer_of.text = More[0] + "/n" + More[1] + "/n" + More[2]
-        
-        let vc = SFSafariViewController(url: URL(string: More[1])!)
-        
-        present(vc, animated: true)
-    }
+ 
     
 
 }

@@ -8,14 +8,19 @@
 
 import Foundation
 class CalculatorLocal : CalculatorProtocol{
+    
+    
+    var gender: Gender = Gender.male
+    
     var height: Double = 0.0
     
     var weight: Double = 0.0
     
     
-  func setInputs(height: Double, weight: Double) {
+    func setInputs(height: Double, weight: Double , gender : Gender) {
         self.height = height
         self.weight = weight
+        self.gender = gender
     }
     
     func calcBMI() -> Double {

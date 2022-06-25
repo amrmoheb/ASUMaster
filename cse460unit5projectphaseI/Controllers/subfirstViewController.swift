@@ -12,6 +12,7 @@ import Foundation
 class subfirstViewController: UIViewController {
 
     
+    @IBOutlet weak var genderLable: UITextField!
     
     @IBOutlet weak var height: UITextField!
     
@@ -39,12 +40,26 @@ class subfirstViewController: UIViewController {
     
     
     @IBAction func Calculate_BMI(_ sender: Any) {
-        let heght1 = Double(height.text!)!
-        let weight1 = Double(weight.text!)!
+        var gender = Gender.male
+        switch genderLable.text ?? "M"
+        {
+        case "M":
+            gender = Gender.male
+            break
+            
+        case "F":
+            gender = Gender.female
+            break
+            
+        default:
+            gender = Gender.male
+            break
+            
+        }
+        print(calculator.gender)
         
-        let calmodel = Calculator(height: heght1, weight: weight1)
-        
-        calculator.setInputs(height: Double(height.text ?? "") ?? 0, weight: Double(weight.text ?? "") ?? 0)
+        calculator.setInputs(height: Double(height.text ?? "0") ?? 0, weight: Double(weight.text ?? "0") ?? 0, gender: gender)
+
         
         let BMI_value = calculator.calcBMI() //calmodel.BMI()
         

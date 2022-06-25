@@ -4,24 +4,21 @@
 
 import Foundation
 class CalculatorWeb : CalculatorProtocol{
-   
-    
+    var gender: Gender = Gender.male
     var height: Double = 0.0
     
     var weight: Double = 0.0
     var valueOfBMI = 0.0
-    
-    func setInputs(height: Double, weight: Double) {
+    var messageValueText = ""
+    func setInputs(height: Double, weight: Double , gender : Gender) {
         self.height = height
         self.weight = weight
+        self.gender = gender
     }
     
-    func calcBMI() -> Double {
-        let height = height_text.text!
-        let weight = weight_text.text!
+    func  remoteCalc(compliationHandler: @escaping  ((Response?) -> Void)) {
         
-        
-        let urlAsString = "http://webstrar99.fulton.asu.edu/page3/Service1.svc/calculateBMI?height=\(height)&weight=\(weight)"
+        let urlAsString = "http://webstrar99.fulton.asu.edu/page3/Service1.svc/calculateBMI?height=\(self.height)&weight=\(self.weight)&gender=\(self.gender)"
         print(urlAsString)
 
         
@@ -41,34 +38,27 @@ class CalculatorWeb : CalculatorProtocol{
             }
             catch{
                 print("failed to convert \(error.localizedDescription)")
+                compliationHandler(nil)
+
             }
             guard let json = result else{
+                compliationHandler(nil)
+
                 return
             }
-            More = json.more
-            if(json.bmi < 18){
-                self.Label_label.textColor = .blue
-                self.Message_label.textColor = .blue
-            }
-            else if(json.bmi >= 18 && json.bmi < 25){
-                self.Label_label.textColor = .green
-                self.Message_label.textColor = .green
-            }
-            else if(json.bmi >= 25 && json.bmi < 30){
-                self.Label_label.textColor = .purple
-                self.Message_label.textColor = .purple
-            }
-            else{
-                self.Label_label.textColor = .red
-                self.Message_label.textColor = .red
-            }
-            DispatchQueue.main.async {
-                self.Label_label.text = String(format: "%.2f", json.bmi)
-                self.BMI_label.text = "BMI:"
-                self.Message_label.text = json.risk
-            }
-            })
-            task.resume()
+            self.valueOfBMI = json.bmi
+            self.messageValueText = json.risk
+            compliationHandler(json)
+        })
+        task.resume()
+    
+    /*    let json = Response(bmi: 12, healthInfo: ["https://www.google.com/" , "https://www.yahoo.com"], risk: "you will die")
+        self.valueOfBMI = json.bmi
+        self.messageValueText = json.risk
+        compliationHandler(json)*/
+    }
+    func calcBMI() -> Double {
+  
         return valueOfBMI
     }
     
@@ -79,7 +69,7 @@ class CalculatorWeb : CalculatorProtocol{
     
     func messageValue() -> String {
         //TODO
-        return ""
+        return "\(messageValueText)"
     }
     
  

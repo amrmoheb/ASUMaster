@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="b5H-7A-8eU">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
@@ -22,7 +22,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="My BMI Calculator"/>
                                 <connections>
-                                    <action selector="didTapButton" destination="BYZ-38-t0r" eventType="touchUpInside" id="QrX-Mt-wOg"/>
+                                    <action selector="localCalc:" destination="BYZ-38-t0r" eventType="touchUpInside" id="A2a-T3-snU"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tef-22-WZc">
@@ -30,17 +30,22 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="BMI API"/>
                                 <connections>
-                                    <action selector="didTapButton1" destination="BYZ-38-t0r" eventType="touchUpInside" id="hZv-Ls-DJi"/>
+                                    <action selector="apiCalc:" destination="BYZ-38-t0r" eventType="touchUpInside" id="dcz-Qz-GVV"/>
                                 </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
+                    <navigationItem key="navigationItem" id="22x-iu-45z"/>
+                    <connections>
+                        <segue destination="u2T-1H-x1P" kind="show" identifier="idealWaightLocalCalc" id="56g-Ka-tKi"/>
+                        <segue destination="hIN-SN-ZMv" kind="show" identifier="idealWaightAPI" id="uLL-kP-ppq"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="137.68115942028987" y="93.75"/>
+            <point key="canvasLocation" x="1047.8260869565217" y="93.75"/>
         </scene>
         <!--Sub_first_View_Controller-->
         <scene sceneID="Gdk-h4-uMd">
@@ -84,21 +89,21 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="BMI" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bCF-gt-YTh">
-                                <rect key="frame" x="122" y="362" width="82" height="24"/>
+                                <rect key="frame" x="122" y="448" width="82" height="24"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kpJ-Nl-jgD">
-                                <rect key="frame" x="227" y="362" width="90" height="22"/>
+                                <rect key="frame" x="227" y="448" width="90" height="22"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nh3-IM-yWI">
-                                <rect key="frame" x="160" y="557" width="95" height="16"/>
+                                <rect key="frame" x="160" y="643" width="95" height="16"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Calculate BMI"/>
                                 <connections>
@@ -106,7 +111,7 @@
                                 </connections>
                             </button>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="message" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="1kx-VI-X5O">
-                                <rect key="frame" x="87" y="408" width="240" height="128"/>
+                                <rect key="frame" x="87" y="494" width="240" height="128"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <color key="textColor" systemColor="labelColor"/>
@@ -127,12 +132,27 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Enter Gender:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fHs-7n-PDN">
+                                <rect key="frame" x="87" y="341" width="101" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="uY0-F8-DII">
+                                <rect key="frame" x="223" y="334" width="97" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="wvS-uh-mVK"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
+                    <navigationItem key="navigationItem" id="047-8T-LwV"/>
                     <connections>
                         <outlet property="BMI" destination="bCF-gt-YTh" id="Fnv-Ts-Ivh"/>
+                        <outlet property="genderLable" destination="uY0-F8-DII" id="cjJ-mF-vlE"/>
                         <outlet property="height" destination="xjt-7A-MX7" id="egJ-aB-52U"/>
                         <outlet property="inputLabel" destination="kpJ-Nl-jgD" id="RqI-dQ-pOl"/>
                         <outlet property="message1" destination="1kx-VI-X5O" id="mgO-FU-rp1"/>
@@ -141,7 +161,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zri-FT-Xmd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="879.71014492753625" y="375"/>
+            <point key="canvasLocation" x="1789.8550724637682" y="375"/>
         </scene>
         <!--Subsecond View Controller-->
         <scene sceneID="J0H-CO-Rwc">
@@ -185,7 +205,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qvY-IQ-HgN">
-                                <rect key="frame" x="95" y="526" width="83" height="30"/>
+                                <rect key="frame" x="94" y="653" width="83" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Call BMI API"/>
                                 <connections>
@@ -193,30 +213,30 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="BMI" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PSC-es-Zwo">
-                                <rect key="frame" x="123" y="356" width="64" height="21"/>
+                                <rect key="frame" x="122" y="483" width="64" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kwu-A0-o2y">
-                                <rect key="frame" x="212" y="356" width="82" height="21"/>
+                                <rect key="frame" x="211" y="483" width="82" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kdv-Dw-I9n">
-                                <rect key="frame" x="239" y="525" width="82" height="30"/>
+                                <rect key="frame" x="238" y="652" width="82" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Educate Me"/>
                                 <connections>
                                     <action selector="EducateMe:" destination="hIN-SN-ZMv" eventType="touchUpInside" id="hdI-wa-ucs"/>
-                                    <segue destination="ZgR-ZO-yb0" kind="show" identifier="segue" id="ZMA-BN-Dhc"/>
+                                    <segue destination="ZgR-ZO-yb0" kind="show" identifier="healthInfo" id="ZMA-BN-Dhc"/>
                                 </connections>
                             </button>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="Message" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="dLt-q7-GKy">
-                                <rect key="frame" x="87" y="384" width="240" height="128"/>
+                                <rect key="frame" x="86" y="511" width="240" height="128"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <color key="textColor" systemColor="labelColor"/>
@@ -237,28 +257,44 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Enter Gender" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mor-Z7-nmz">
+                                <rect key="frame" x="86" y="345" width="101" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0WO-aa-zwJ">
+                                <rect key="frame" x="212" y="338" width="97" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="eoS-bh-J8J"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
+                    <navigationItem key="navigationItem" id="wws-8Q-TYe"/>
                     <connections>
-                        <outlet property="BMI_label" destination="PSC-es-Zwo" id="JeR-pU-on9"/>
-                        <outlet property="Label_label" destination="Kwu-A0-o2y" id="hLf-Dv-ERS"/>
-                        <outlet property="Message_label" destination="dLt-q7-GKy" id="iFl-WM-4JM"/>
-                        <outlet property="height_text" destination="I6w-3X-d39" id="KNI-2B-Re3"/>
-                        <outlet property="weight_text" destination="N9i-h5-GJ7" id="CGV-6g-5y4"/>
+                        <outlet property="bmiLabel" destination="PSC-es-Zwo" id="JeR-pU-on9"/>
+                        <outlet property="bmiValueLable" destination="Kwu-A0-o2y" id="hLf-Dv-ERS"/>
+                        <outlet property="educateMeBtn" destination="Kdv-Dw-I9n" id="ocO-XZ-woN"/>
+                        <outlet property="genderLable" destination="0WO-aa-zwJ" id="AnR-2e-Ycs"/>
+                        <outlet property="height" destination="I6w-3X-d39" id="KNI-2B-Re3"/>
+                        <outlet property="messageLabel" destination="dLt-q7-GKy" id="iFl-WM-4JM"/>
+                        <outlet property="weight" destination="N9i-h5-GJ7" id="CGV-6g-5y4"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5Oz-EQ-KIi" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="857.97101449275374" y="-281.25"/>
+            <point key="canvasLocation" x="1768.1159420289857" y="-281.25"/>
         </scene>
         <!--Educate Me View Controller-->
         <scene sceneID="JTM-o2-qrF">
             <objects>
                 <viewController storyboardIdentifier="EducateMeViewController" id="ZgR-ZO-yb0" customClass="EducateMeViewController" customModule="cse460unit5projectphaseI" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="qeK-0U-aZt">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="jqr-Z4-7pw">
@@ -280,7 +316,25 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1Ia-nI-qKM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1653.6231884057972" y="-281.25"/>
+            <point key="canvasLocation" x="2563.768115942029" y="-281.25"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="rAN-zC-Ko6">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="b5H-7A-8eU" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="bXO-P3-N0j">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="ctd-1Y-vkf"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Mc1-q2-MNU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="137.68115942028987" y="93.75"/>
         </scene>
     </scenes>
     <resources>
